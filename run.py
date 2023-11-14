@@ -38,10 +38,16 @@ class TargetBoards:
         self.direct_hit = []
         self.missed_hit = []
 
-    def display_target(self):
+    def display_target(self, hits_hidden=False):
         """
-        Display the user and computer target game boards
+        Display the user and computer target game boards.
+        Also hides the generated hit targets where necessary.
         """
+        def hit_hidden(cell):
+            if hits_hidden is True and cell == "0":
+                return " "
+            return cell    
+
         user_target = f"\n{user_name}'s Target Board:\n"
         computer_target = "\nComputer's Target Board:\n"
 
@@ -50,8 +56,8 @@ class TargetBoards:
                 user_target += "+" + "---+" * (self.size - 1) + "\n"
                 computer_target += "+" + "---+" * (self.size - 1) + "\n"
 
-            user_target += "".join([f"| {cell}" for cell in user_row]) + "|\n"
-            computer_target += "".join([f"| {cell}" for cell in computer_row]) + "|\n"
+            user_target += "".join([f"| {hit_hiddenn(cell)}" for cell in user_row]) + "|\n"
+            computer_target += "".join([f"| {hit_hidden(cell)}" for cell in computer_row]) + "|\n"
 
             if i == len(self.target_size) - 1:
                 user_target += "+" + "---+" * (self.size - 1) + "\n"

@@ -103,8 +103,10 @@ class TargetBoards:
         target = ""
         for i, row in enumerate(self.target_size):
             if i == 0:
-                target += "+" + "---+" * (self.size - 1)
-            target += ("".join([f"{cell} |" for cell in row]) + "\n")    
+                target += "+" + "---+" * (self.size - 1) + "\n"
+            target += "".join([f"| {cell}" for cell in row]) + "|\n"
+            if i == len(self.target_size) - 1:
+                target += "+" + "---+" * (self.size - 1) + "\n"    
    
         print(target)
 

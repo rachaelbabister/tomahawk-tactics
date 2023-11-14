@@ -25,7 +25,6 @@ def game_logo():
     After a pause, the user will be asked to enter their name.
     """
     logo = pyfiglet.figlet_format("Tomahawk Tactics") 
-    global welcome
     welcome = pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital") 
     print(logo, welcome, "\nby Rachael Babister\n")
     print("\nGame Loading...\n")
@@ -40,6 +39,7 @@ def run_game():
     Once validated, the user can then specify y/n to play the game.
     """
     while True:
+        global user_name 
         user_name = input("Enter your name: ")
         if user_name == "":
             print("You need to enter your name in order to play")
@@ -47,7 +47,7 @@ def run_game():
             break
 
     clear()
-    print(welcome)
+    print(pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital"))
     print()
     print(f"Hello {user_name}! \n")
     print("""
@@ -98,17 +98,24 @@ class TargetBoards:
 
     def display_target(self):
         """
-        Display the target game boards
+        Display the user and computer target game boards
         """
-        target = ""
-        for i, row in enumerate(self.target_size):
+        user_target = f"\n{user_name}'s Target Board:\n"
+        computer_target = "\nComputer's Target Board:\n"
+
+        for i, (user_row, computer_row) in enumerate(zip(self.target_size, self.target_size)):
             if i == 0:
-                target += "+" + "---+" * (self.size - 1) + "\n"
-            target += "".join([f"| {cell}" for cell in row]) + "|\n"
+                user_target += "+" + "---+" * (self.size - 1) + "\n"
+                computer_target += "+" + "---+" * (self.size - 1) + "\n"
+
+            user_target += "".join([f"| {cell}" for cell in user_row]) + "|\n"
+            computer_target += "".join([f"| {cell}" for cell in computer_row]) + "|\n"
+
             if i == len(self.target_size) - 1:
-                target += "+" + "---+" * (self.size - 1) + "\n"    
+                user_target += "+" + "---+" * (self.size - 1) + "\n"
+                computer_target += "+" + "---+" * (self.size - 1) + "\n"    
    
-        print(target)
+        print(user_target + computer_target)
 
 
 # CALLING ALL FUNCTIONS
@@ -116,7 +123,7 @@ def main():
     """
     Runs all funcions
     """
-    game_logo()
+    user_name = game_logo()
     target_boards = TargetBoards()
     target_boards.display_target()
 

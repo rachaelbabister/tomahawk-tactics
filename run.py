@@ -18,6 +18,65 @@ def clear():
         os.system('cls')
 
 
+# CREATE GAME TARGET BOARDS
+class TargetBoards:
+    """
+    Class to create the target game boards 4 x 4 in size,
+    and keep track of the hits and misses
+    """
+    def __init__(self):
+        print("\nGetting targets ready...\n")
+        time.sleep(3)
+        self.size = 4
+        self.target_size = [[" " for i in range(self.size)] for i in range(self.size)]
+        self.target_hits = 3
+        self.hit_positions = []
+        for i in range(self.target_hits):
+            hit = self.random_hit()
+            self.hit_positions.append(hit)
+            self.add_to_state(hit, "0")
+        self.direct_hit = []
+        self.missed_hit = []
+
+    def display_target(self):
+        """
+        Display the user and computer target game boards
+        """
+        user_target = f"\n{user_name}'s Target Board:\n"
+        computer_target = "\nComputer's Target Board:\n"
+
+        for i, (user_row, computer_row) in enumerate(zip(self.target_size, self.target_size)):
+            if i == 0:
+                user_target += "+" + "---+" * (self.size - 1) + "\n"
+                computer_target += "+" + "---+" * (self.size - 1) + "\n"
+
+            user_target += "".join([f"| {cell}" for cell in user_row]) + "|\n"
+            computer_target += "".join([f"| {cell}" for cell in computer_row]) + "|\n"
+
+            if i == len(self.target_size) - 1:
+                user_target += "+" + "---+" * (self.size - 1) + "\n"
+                computer_target += "+" + "---+" * (self.size - 1) + "\n"    
+   
+        print(user_target + computer_target)
+
+    def random_hit(self):
+        """
+        Generate a random hit on the target board.
+        """ 
+        row = randrange(self.size)
+        col = randrange(self.size)
+        return (row, col)
+
+    def unique_random_hit(self):
+        """
+        Generate a random hit that hasn't already been chosen.
+        """
+        while True:
+            hit = self.random_hit()
+            if hit not in self.hit_positions:
+                return hit    
+
+
 # GAME LOGO AND WELCOME MESSAGE
 def game_logo():
     """
@@ -70,7 +129,6 @@ your guess might look like 'C3'.
             user_input = input("Are you ready to play? (y/n): ").lower()
             if user_input == 'y':
                 print("\nGreat! Get your axe ready!")
-                # create_target() !!!!!!!???????????????????????????????????????????????
                 return True
             elif user_input == 'n':
                 print("\nAxes down, see you next time. Goodbye.")
@@ -78,44 +136,6 @@ your guess might look like 'C3'.
             else:
                 print("Invalid input. Please enter 'y' or 'n'.")
     return ready_to_play()              
-
-
-# CREATE GAME TARGETS
-class TargetBoards:
-    """
-    Class to create the target game boards 4 x 4 in size,
-    and keep track of the hits and misses
-    """
-    def __init__(self):
-        print("\nGetting targets ready...\n")
-        time.sleep(3)
-        self.size = 4
-        self.target_size = [[" " for i in range(self.size)] for i in range(self.size)]
-        self.target_hits = 3
-        self.target_positions = []
-        self.direct_hit = []
-        self.missed_hit = []
-
-    def display_target(self):
-        """
-        Display the user and computer target game boards
-        """
-        user_target = f"\n{user_name}'s Target Board:\n"
-        computer_target = "\nComputer's Target Board:\n"
-
-        for i, (user_row, computer_row) in enumerate(zip(self.target_size, self.target_size)):
-            if i == 0:
-                user_target += "+" + "---+" * (self.size - 1) + "\n"
-                computer_target += "+" + "---+" * (self.size - 1) + "\n"
-
-            user_target += "".join([f"| {cell}" for cell in user_row]) + "|\n"
-            computer_target += "".join([f"| {cell}" for cell in computer_row]) + "|\n"
-
-            if i == len(self.target_size) - 1:
-                user_target += "+" + "---+" * (self.size - 1) + "\n"
-                computer_target += "+" + "---+" * (self.size - 1) + "\n"    
-   
-        print(user_target + computer_target)
 
 
 # CALLING ALL FUNCTIONS

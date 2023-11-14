@@ -1,8 +1,10 @@
+# IMPORTS
 import pyfiglet
 import time
 import os
 
 
+# CONSOLE CLEARING
 def clear():
     """
     Clears the console, to avoid the user too much scrolling
@@ -15,7 +17,7 @@ def clear():
         os.system('cls')
 
 
-# Game logo and welcome message
+# GAME LOGO AND WELCOME MESSAGE
 def game_logo():
     """
     Will display the game name and welcome message in ASCII Art.
@@ -30,6 +32,7 @@ def game_logo():
     run_game()
 
 
+# ENTER NAME AND START GAME
 def run_game():
     """
     User enters their name in order for the game rules to appear.
@@ -55,7 +58,23 @@ are rows (in letters) and columns (in numbers), so an example of
 your guess might look like 'C3'.
     """)
 
+    # READY TO PLAY FUNCTION
+    def ready_to_play():
+    while True:
+        user_input = input("Are you ready to play? (y/n): ").lower()
+        if user_input == 'y':
+            print("Great! Get your axe ready!")
+            create_target()
+            return True
+        elif user_input == 'n':
+            print("Maybe next time. Goodbye!")
+            return False
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
+
+
+# CALLING ALL FUNCTIONS
 def main():
     """
     Runs all funcions

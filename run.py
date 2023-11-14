@@ -2,6 +2,7 @@
 import pyfiglet
 import time
 import os
+import random
 
 
 # CONSOLE CLEARING
@@ -29,7 +30,7 @@ def game_logo():
     print(logo, welcome, "\nby Rachael Babister\n")
     print("\nGame Loading...\n")
     time.sleep(2)
-    run_game()
+    return run_game()
 
 
 # ENTER NAME AND START GAME
@@ -60,18 +61,52 @@ your guess might look like 'C3'.
 
     # READY TO PLAY FUNCTION
     def ready_to_play():
-    while True:
-        user_input = input("Are you ready to play? (y/n): ").lower()
-        if user_input == 'y':
-            print("Great! Get your axe ready!")
-            create_target()
-            return True
-        elif user_input == 'n':
-            print("Maybe next time. Goodbye!")
-            return False
-        else:
-            print("Invalid input. Please enter 'y' or 'n'.")
+        """
+        User inputs whether they are ready to play or not. 
+        If 'y' the game creates the target ready to play. 
+        If 'n', the program stops.
+        """
+        while True:
+            user_input = input("Are you ready to play? (y/n): ").lower()
+            if user_input == 'y':
+                print("\nGreat! Get your axe ready!")
+                # create_target() !!!!!!!???????????????????????????????????????????????
+                return True
+            elif user_input == 'n':
+                print("\nAxes down, see you next time. Goodbye.")
+                return False
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
+    return ready_to_play()              
 
+
+# CREATE GAME TARGETS
+class TargetBoards:
+    """
+    Class to create the target game boards 4 x 4 in size,
+    and keep track of the hits and misses
+    """
+    def __init__(self):
+        print("\nGetting targets ready...\n")
+        time.sleep(3)
+        self.size = 4
+        self.target_size = [[" " for i in range(self.size)] for i in range(self.size)]
+        self.target_hits = 3
+        self.target_positions = []
+        self.direct_hit = []
+        self.missed_hit = []
+
+    def display_target(self):
+        """
+        Display the target game boards
+        """
+        target = ""
+        for i, row in enumerate(self.target_size):
+            if i == 0:
+                target += "+" + "---+" * (self.size - 1)
+            target += ("".join([f"{cell} |" for cell in row]) + "\n")    
+   
+        print(target)
 
 
 # CALLING ALL FUNCTIONS
@@ -79,6 +114,8 @@ def main():
     """
     Runs all funcions
     """
-    game_logo()     
+    game_logo()
+    target_boards = TargetBoards()
+    target_boards.display_target()
 
 main()

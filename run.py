@@ -124,6 +124,19 @@ class TomaHawkGame:
             except ValueError:
                 pass                
 
+    def play_game(self, user_target, computer_target):
+        """
+        Sets the game up against the computer, ready to play
+        """
+        def show_targets():
+            """
+            Shows the target boards
+            """
+            print("Computer's Target: \n")
+            computer_target.display_target(True)
+            print(f"{self.user_name}'s Target: \n")
+            user_target.display_target()
+
 
 
     def run_game(self):

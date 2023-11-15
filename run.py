@@ -85,6 +85,25 @@ class TomaHawkGame:
     Functions to launch the game play.
     """
     def throw_axe(self, target):
+        """
+        Get the user to 'throw' their axe by selecting a row and column.
+        It will validate the guess - if the guess is unique it will return
+        the parsed guess. If the guess is not unique, it will print a 
+        message and continue the loop.
+        """
+        while True:
+            try:
+                parsed_throw_axe = self.parse_throw_axe()
+                input("Throw your first axe! Enter your 2 chosen numbers: ")
+
+                if target.validate_throw(parsed_throw_axe) is True:
+                    if target.unique_throw(parsed_throw_axe):
+                        return parsed_throw_axe
+                    print("This has been guessed already. Try again!")
+                else:
+                    print("You missed the target! Try again.")
+            except ValueError:
+                pass                
 
 
 

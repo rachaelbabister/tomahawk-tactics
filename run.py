@@ -94,7 +94,7 @@ class TargetBoards:
         """
         Ensure the guess is unique
         """
-        return (hit not in self.target_hit and hit not in self.target_not_hit)
+        return (hit not in self.direct_hit and hit not in self.missed_hit)
 
     def show_hit(self, hit):
         """
@@ -134,6 +134,13 @@ class TomaHawkGame:
     """
     Functions to launch the game play.
     """
+
+    def parse_throw_axe(self, throw):
+        """
+        Parse the user's throw to be tuple of int.
+        """
+        return tuple(map(int, throw.split(",")))
+
     def throw_axe(self, target):
         """
         Get the user to 'throw' their axe by selecting a row and column.
@@ -143,8 +150,8 @@ class TomaHawkGame:
         """
         while True:
             try:
-                parsed_throw_axe = self.parse_throw_axe()
-                input("Throw your first axe! Enter your 2 chosen numbers: ")
+                parsed_throw_axe = self.parse_throw_axe(
+                    input("Axes ready! Enter your 2 chosen numbers (between 0 and 3): "))
 
                 if target.validate_throw(parsed_throw_axe) is True:
                     if target.unique_throw(parsed_throw_axe):
@@ -163,7 +170,7 @@ class TomaHawkGame:
             """
             Show the target boards
             """
-            print("Computer's Target: \n")
+            print("\nComputer's Target: \n")
             computer_target.display_target(True)
             print(f"{self.user_name}'s Target: \n")
             user_target.display_target()
@@ -177,20 +184,21 @@ class TomaHawkGame:
             """
             user_throw = self.throw_axe(computer_target) 
             computer_target.show_hit(user_throw) 
+
             computer_throw = user_target.get_random_hit() 
             user_target.show_hit(computer_throw) 
 
             # Check to see who won - user or computer
-            if computer_throw.game_over():
+            if computer_target.game_over():
                 show_targets()
                 print(f"Well done {self.user_name}! You won Tomahawk Tactics!")
                 break
-            
-            if user_throw.game_over():
+
+            if user_target.game_over():
                 show_targets()
                 print("Better luck next time. The computer won Tomahawk Tactics!")
                 break
-            
+
     # ENTER NAME AND START GAME
     def run_game(self):
         """
@@ -226,29 +234,14 @@ player who hits 3 targets first. To select a target, please select
 2 numbers between 0 and 3 and separate them with a comma. 
 For example, 0,2
         """)
-
         # READY TO PLAY FUNCTION
-        def ready_to_play():
-            """
-            User inputs whether they are ready to play or not. 
-            If 'y' the game creates the target ready to play. 
-            If 'n', the program stops.
-            """
-            while True:
-                user_input = input("Are you ready to play? (y/n): ").lower()
-                if user_input == 'y':
-                    print("\nGreat! Get your axe ready!")
-                    return True
-                elif user_input == 'n':
-                    print("\nAxes down, see you next time. Goodbye.")
-                    return False
-                else:
-                    print("Invalid input. Please enter 'y' or 'n'.")
+        while True:
+            user_input = input("Are you ready to play? (y/n): ").lower()
+            if user_input == 'y':
+                print("\nGreat! Get your axe ready!")
 
-            while True:
                 computer_target = TargetBoards()
                 user_target = TargetBoards()
-
                 self.play_game(user_target, computer_target)
 
                 print("Thank you for playing Tomahawk Tactics")
@@ -256,6 +249,11 @@ For example, 0,2
                 play_again = input("Would you like to play another round? y/n \n")
                 if play_again.lower() == "n":
                     break
+            elif user_input == 'n':
+                print("\nAxes down, see you next time. Goodbye.")
+                break
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
 
 
 # CALLING GAME FUNCTIONS

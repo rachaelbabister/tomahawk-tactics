@@ -162,6 +162,16 @@ class TomaHawkGame:
             print(f"{self.user_name}'s Target: \n")
             user_target.display_target()
 
+        while True:
+            show_targets()
+
+            user_throw = self.throw_axe(computer_target)
+            computer_target.show_hit(user_throw)
+
+            computer_throw = user_target.get_random_hit()
+
+            user_target.show_hit(computer_throw)
+
 
 
     def run_game(self):

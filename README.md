@@ -13,41 +13,35 @@ GITHUB PAGES
 [You can view the GitHub code pages here.](https://github.com/rachaelbabister/tomahawk-tactics)
 
 ---
-
 ## CONTENTS
+<!-- TOC -->
 
-- [LYRICAL BLANKETY BLANK](#lyrical-blankety-blank)
-  - [CONTENTS](#contents)
-  - [User Experience (UX)](#user-experience-ux)
-    - [Client Goals](#client-goals)
-    - [Visitor Goals](#visitor-goals)
-  - [Design](#design)
-    - [Colour Scheme](#colour-scheme)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-    - [Wireframes](#wireframes)
-  - [Features](#features)
-    - [Favicon](#favicon)
-    - [Game Title](#game-title)
-    - [Game Area](#game-area)
-    - [Intro Text](#intro-text)
-    - [Questions](#questions)
-    - [Answers](#answers)
-    - [Results](#results)
-    - [Future Implementations](#future-implementations)
-  - [Technologies Used](#technologies-used)
-    - [Languages Used](#languages-used)
-    - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
-    - [Deployment](#deployment)
-    - [Local Development](#local-development)
-      - [How to Fork](#how-to-fork)
-      - [How to Clone](#how-to-clone)
-  - [Testing](#testing)
-  - [Credits](#credits)
-    - [Code Used](#code-used)
-    - [Content](#content)
-    - [Media](#media)
-    - [Acknowledgments](#acknowledgments)
+- [TOMAHAWK TACTICS](#tomahawk-tactics)
+    - [CONTENTS](#contents)
+    - [User Experience UX](#user-experience-ux)
+        - [Client Goals](#client-goals)
+        - [Visitor Goals](#visitor-goals)
+    - [Design](#design)
+        - [Flow Chart](#flow-chart)
+    - [Features](#features)
+        - [Features need to go here](#features-need-to-go-here)
+        - [Future Implementations](#future-implementations)
+    - [Technologies Used](#technologies-used)
+        - [Languages Used](#languages-used)
+        - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+        - [Deployment](#deployment)
+        - [Local Development](#local-development)
+            - [How to Fork](#how-to-fork)
+            - [How to Clone](#how-to-clone)
+    - [Testing](#testing)
+        - [Validator Testing](#validator-testing)
+        - [Manual Testing](#manual-testing)
+    - [Credits](#credits)
+        - [Code Used](#code-used)
+        - [Content](#content)
+        - [Inspiration for the Game](#inspiration-for-the-game)
+
+<!-- /TOC -->
 
 ---
 
@@ -55,11 +49,20 @@ GITHUB PAGES
 
 ### Client Goals
 
-- 
+- An axe throwing logical game, whereby the players have to 'throw' their axe to hit a moving target.
+- It will be played on grids where the targets are marked.
+- The locations of the targets need to be concealed from the other player.
+- Players take their turns to 'throw' their axe, with the objective being they need to make contact with the target.
+- The player who hits the most targets first, wins.
+- Players will compete against the computer.
 
 ### Visitor Goals
 
-- 
+- I would like to play an online logical game.
+- I would like to compete against the computer.
+- I don't want the game so long that I get bored.
+- I want to know who won at the end of the game.
+- I would like the option to play again.
 
 ---
 
@@ -69,7 +72,7 @@ GITHUB PAGES
 
 To help get a better understanding before I started writing the code for this game, I created a flow chart within [Lucid](https://lucid.app/).
 
-(images/flowchart.png)
+![Tomahawk Tactics Flow Chart](images/flowchart.png)
 
 
 ---
@@ -78,11 +81,16 @@ To help get a better understanding before I started writing the code for this ga
 
 The game is an interactive command-line game, created using Python and deployed within Heruko.
 
-### 
+### Features need to go here
 
+
+
+--
 ### Future Implementations
 
-- 
+- At the beginning of the game, the player would have the option to choose their grid size. Depending on the size, this would affect the number of targets and axe throws they get.
+- It would be good to introduce some colour to the game, both with the 'logo' and also on the targets to make it visually clear when you have hit it.
+- To have the options of playing single, 2 players, or against the computer.
 
 ---
 
@@ -92,13 +100,15 @@ The game is an interactive command-line game, created using Python and deployed 
 
 Python was used to create this interactive command-line game.
 
+--
 ### Frameworks, Libraries & Programs Used
 
 - [Lucid](https://lucid.app/) - to create Flow Charts.
 - [Codeanywhere](https://app.codeanywhere.com/) - cross-platform cloud IDE to deploy workspace environment to Github.
-- [Github](https://github.com/) - to store and display all files and assets for the website.
-- [Heroku](https://heroku.com/) - to deploy and host the dynamic back-end Python game.
+- [Github](https://github.com/) - to store and display all files and assets for the project.
+- [Heroku](https://heroku.com/) - to deploy and host the logical game.
 
+--
 ### Deployment
 
 The game was written within CodeAnywhere, committed to GitHub to store as a local repository, and then deployed to Heroku. To deploy on Heroku, follow these steps:
@@ -120,6 +130,7 @@ The game was written within CodeAnywhere, committed to GitHub to store as a loca
 15. Under 'Automatic deploys', click on 'Enable Automatic Deploys' if you want the app to update every time you push changes to GitHub.
 16. Finally, click on 'Deploy Branch' under 'Manual deploy' to deploy your app. Once completed, you will be able to view your deployed link.
 
+--
 ### Local Development
 
 #### How to Fork
@@ -140,14 +151,14 @@ To clone a repository on Github, follow these steps:
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and paste the link you copied in step 3. Press enter.
 
-- - -
+---
 
 ## Testing
 
 ### Validator Testing
 
 
-
+--
 ### Manual Testing
 
 | Feature | Expected Action | Test Result |
@@ -162,17 +173,19 @@ To clone a repository on Github, follow these steps:
 
 ### Code Used
 
-- [Stack Overflow]() - 
-- [Slack Community](https://app.slack.com/) - 
+- [Ask Python](https://www.askpython.com/python-modules/ascii-art) - helped to create the title of the game in ASCII art.
+- [Scaler.com](https://www.scaler.com/topics/how-to-clear-screen-in-python/) - helped with the code to clears the console.
+- [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-add-time-delay-in-python/) - helped with the code for adding a time delay.
+- [Stack Overflow](https://stackoverflow.com/) - my ReadMe file for some reason wasn't automatically updating my contents menu. Looked on Slack for help and advice and eventually installed 'toc'.
+- [Stack Overflow](https://stackoverflow.com/questions/34980251/how-to-print-multiple-lines-of-text-with-python) - how to print multiple lines of text in Python.
+- [Slack Community](https://app.slack.com/) - just general advice on the Slack Community.
 
+--
 ### Content
 
 Introduction and game rules written by Rachael Babister.
 
- 
+--
 ### Inspiration for the Game
 
 Battleships is very much a game I remember from my childhood, playing with my brother on a little plastic game that attached back-to-back so we could see each other's ships, with little pegs popped in where we guessed! I wanted to base my game around this, however having recently been axe throwing and enjoying the activity immensely, I decided to name the game around this theme, with the idea that you are throwing an axe at the target. The 'real-life' game doesn't have moving targets like this game suggests, however, because the user was inputting coordinates rather than aiming for the bullseye, I went with this idea.
- 
-### Acknowledgments
-

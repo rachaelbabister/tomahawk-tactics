@@ -244,15 +244,20 @@ For example, 0,2
                     return False
                 else:
                     print("Invalid input. Please enter 'y' or 'n'.")
-        return ready_to_play()
+
+            while True:
+                computer_target = TargetBoards()
+                user_target = TargetBoards()
+
+                self.play_game(user_target, computer_target)
+
+                print("Thank you for playing Tomahawk Tactics")
+
+                play_again = input("Would you like to play another round? y/n \n")
+                if play_again.lower() == "n":
+                    break
 
 
-# CALLING ALL FUNCTIONS
-def main():
-    """
-    Run all funcions
-    """
-    play = TomaHawkGame()
-    play.run_game()
-
-main()
+# CALLING GAME FUNCTIONS
+play = TomaHawkGame()
+play.run_game()

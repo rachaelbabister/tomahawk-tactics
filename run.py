@@ -54,7 +54,7 @@ class TargetBoards:
             if i == 0:
                 target += "+" + "---+" * (self.size - 1) + "\n"
                 
-            target += "".join([f"| {hit_hidden(cell)}" for cell in user_row]) + "|\n"
+            target += "".join([f"| {hit_hidden(cell)}" for cell in row]) + "|\n"
             
             if i == len(self.target_size) - 1:
                 target += "+" + "---+" * (self.size - 1) + "\n"
@@ -76,7 +76,26 @@ class TargetBoards:
         while True:
             hit = self.random_hit()
             if hit not in self.hit_positions:
-                return hit    
+                return hit
+
+    def validate_throw(self, hit):
+        """
+        Validate the throw 'hits' the target
+        """
+        if len(hit) != 2:
+            return False
+        if hit[0] < 0 or hit[0] > self.size - 1:
+            return False
+        if hit[1] < 0 or hit[1] > self.size - 1:
+            return False
+        return True   
+
+    def unique_throw(self, hit):
+        """
+        Ensure the guess is unique
+        """
+        return (hit not in self.target_hit and hit not in self.target_not_hit)
+            
 
 
 # GAME LOGO AND WELCOME MESSAGE
@@ -138,9 +157,9 @@ class TomaHawkGame:
 This is Tomahawk Tactics, an axe throwing game in which you need
 to hit a moving target! You get 5 throws per game, and will play
 against the computer who will also get 5 throws. The winner is the
-player who hits 3 targets first. To select a target, imagine there
-are rows (in letters) and columns (in numbers), so an example of 
-your guess might look like 'C3'.
+player who hits 3 targets first. To select a target, please select
+2 numbers between 0 and 3 and separate them with a comma. 
+For example, 0,2
         """)
 
         # READY TO PLAY FUNCTION

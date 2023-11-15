@@ -8,7 +8,7 @@ from random import randrange
 # CONSOLE CLEARING
 def clear():
     """
-    Clears the console, to avoid the user too much scrolling
+    Clear the console, to avoid the user too much scrolling
     """
     # If the system is Mac or Linux
     if os.name == 'posix':
@@ -41,7 +41,7 @@ class TargetBoards:
     def display_target(self, hits_hidden=False):
         """
         Display the user and computer target game boards.
-        Also hides the generated hit targets where necessary.
+        Hide the generated hit targets where necessary.
         """
         def hit_hidden(cell):
             if hits_hidden is True and cell == "0":
@@ -95,6 +95,17 @@ class TargetBoards:
         Ensure the guess is unique
         """
         return (hit not in self.target_hit and hit not in self.target_not_hit)
+
+    def show_hit(self, hit):
+        """
+        Add the guess to the target if correct
+        """
+        if hit in self.hit_positions:
+            self.direct_hit.append(hit)
+            self.add_to_target(hit, "O")
+        else:
+            self.missed_hit.append(hit)
+            self.add_to_target(hit, "X")
             
 
 
@@ -106,7 +117,7 @@ class TomaHawkGame:
     def throw_axe(self, target):
         """
         Get the user to 'throw' their axe by selecting a row and column.
-        It will validate the guess - if the guess is unique it will return
+        Validate the guess - if the guess is unique it will return
         the parsed guess. If the guess is not unique, it will print a 
         message and continue the loop.
         """
@@ -126,11 +137,11 @@ class TomaHawkGame:
 
     def play_game(self, user_target, computer_target):
         """
-        Sets the game up against the computer, ready to play
+        Set the game up against the computer, ready to play
         """
         def show_targets():
             """
-            Shows the target boards
+            Show the target boards
             """
             print("Computer's Target: \n")
             computer_target.display_target(True)
@@ -141,8 +152,8 @@ class TomaHawkGame:
 
     def run_game(self):
         """
-        Will display the game name and welcome message in ASCII Art.
-        After a pause, the user will be asked to enter their name.
+        Display the game name and welcome message in ASCII Art.
+        User asked to enter their name.
         """
         logo = pyfiglet.figlet_format("Tomahawk Tactics") 
         welcome = pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital") 
@@ -198,11 +209,9 @@ For example, 0,2
 # CALLING ALL FUNCTIONS
 def main():
     """
-    Runs all funcions
+    Run all funcions
     """
     play = TomaHawkGame()
     play.run_game()
-    target_boards = TargetBoards()
-    target_boards.display_target()
 
 main()

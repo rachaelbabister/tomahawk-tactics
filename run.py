@@ -34,7 +34,7 @@ class TargetBoards:
         for i in range(self.target_hits):
             hit = self.random_hit()
             self.hit_positions.append(hit)
-            #self.add_to_state(hit, "0")
+            self.add_to_target(hit, "0")
         self.direct_hit = []
         self.missed_hit = []
 
@@ -107,6 +107,20 @@ class TargetBoards:
             self.missed_hit.append(hit)
             self.add_to_target(hit, "X")
             
+    def add_to_target(self, hit, letter):
+        """
+        Add a letter on the target board
+        """
+        self.target_size[hit[0]][hit[1]] = letter
+
+    def get_random_hit(self):
+        """
+        Generate a random position not guessed before
+        """
+        while True:
+            hit = self.random_hit()
+            if hit not in self.hit_positions:
+                return hit
 
 
 # GAME LOGO AND WELCOME MESSAGE

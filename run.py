@@ -122,6 +122,12 @@ class TargetBoards:
             if hit not in self.hit_positions:
                 return hit
 
+    def game_over(self):
+        """
+        End the game when a player hits 3 targets within their 5 guesses.
+        """
+        return len(self.direct_hit) == len(self.hit_positions)
+
 
 # GAME LOGO AND WELCOME MESSAGE
 class TomaHawkGame:
@@ -164,16 +170,28 @@ class TomaHawkGame:
 
         while True:
             show_targets()
+            """
+            User & computer's guesses.
+            User's guess is added to computer's target.
+            Computer's guess is added to user's target
+            """
+            user_throw = self.throw_axe(computer_target) 
+            computer_target.show_hit(user_throw) 
+            computer_throw = user_target.get_random_hit() 
+            user_target.show_hit(computer_throw) 
 
-            user_throw = self.throw_axe(computer_target)
-            computer_target.show_hit(user_throw)
-
-            computer_throw = user_target.get_random_hit()
-
-            user_target.show_hit(computer_throw)
-
-
-
+            # Check to see who won - user or computer
+            if computer_throw.game_over():
+                show_targets()
+                print(f"Well done {self.user_name}! You won Tomahawk Tactics!")
+                break
+            
+            if user_throw.game_over():
+                show_targets()
+                print("Better luck next time. The computer won Tomahawk Tactics!")
+                break
+            
+    # ENTER NAME AND START GAME
     def run_game(self):
         """
         Display the game name and welcome message in ASCII Art.
@@ -185,7 +203,6 @@ class TomaHawkGame:
         print("\nGame Loading...\n")
         time.sleep(2)
 
-        # ENTER NAME AND START GAME
         """
         User enters their name in order for the game rules to appear.
         Once validated, the user can then specify y/n to play the game.

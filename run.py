@@ -134,7 +134,6 @@ class TomaHawkGame:
     """
     Functions to launch the game play.
     """
-
     def parse_throw_axe(self, throw):
         """
         Parse the user's throw to be tuple of int.
@@ -188,14 +187,14 @@ class TomaHawkGame:
             user_throw = self.throw_axe(computer_target) 
             computer_target.show_hit(user_throw) 
 
-            computer_throw = user_target.get_random_hit() 
-            user_target.show_hit(computer_throw) 
-
             # Check to see who won - user or computer
             if computer_target.game_over(computer_target.direct_hit):
                 show_targets()
                 print(f"Well done {self.user_name}! You won Tomahawk Tactics!\n")
                 break
+
+            computer_throw = user_target.get_random_hit() 
+            user_target.show_hit(computer_throw) 
 
             if user_target.game_over(user_target.direct_hit):
                 show_targets()
@@ -229,11 +228,13 @@ class TomaHawkGame:
             else:
                 break
 
-        clear()
-        print(pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital"))
-        print()
-        print(f"Hello {self.user_name}! \n")
-        print("""
+        # GAME LOOP FOR PLAYING MULTIPLE ROUNDS
+        while True:
+            clear()
+            print(pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital"))
+            print()
+            print(f"Hello {self.user_name}! \n")
+            print("""
 This is Tomahawk Tactics, an axe throwing game in which you need
 to hit a moving target! You will be playing against the computer - 
 the winner is the player who hits their 3 targets first. \n
@@ -243,25 +244,27 @@ your coordinates for the target. The row is the first number and
 the column is the second number, e.g: 0,2\n
 x = miss | O = hit | t = the computer's hidden targets
         """)
-        # READY TO PLAY 
-        while True:
-            user_input = input("Are you ready to play? (y/n): ").lower()
-            if user_input == 'y':
-                print("\nGreat! Get your axe ready!")
+            # READY TO PLAY 
+            while True:
+                user_input = input("Are you ready to play? (y/n): ").lower()
+                if user_input == 'y':
+                    print("\nGreat! Get your axe ready!")
 
-                computer_target = TargetBoards()
-                user_target = TargetBoards()
-                self.play_game(user_target, computer_target)
+                    computer_target = TargetBoards()
+                    user_target = TargetBoards()
+                    self.play_game(user_target, computer_target)
 
-                play_again = input("Would you like to play another round? y/n \n")
-                if play_again.lower() == "n":
+                    play_again = input("Would you like to play another round? y/n \n")
+                    if play_again.lower() == "n":
+                        print("\nAxes down, see you next time. Goodbye.")
+                        return 
+                    else:
+                        break
+                elif user_input == 'n':
                     print("\nAxes down, see you next time. Goodbye.")
-                    break
-            elif user_input == 'n':
-                print("\nAxes down, see you next time. Goodbye.")
-                break
-            else:
-                print("Invalid input. Please enter 'y' or 'n'.")
+                    return
+                else:
+                    print("Invalid input. Please enter 'y' or 'n'.")
 
 
 # CALLING GAME FUNCTIONS

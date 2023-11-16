@@ -157,15 +157,101 @@ To clone a repository on Github, follow these steps:
 
 ### Validator Testing
 
+**PEP8 Linter Validator**
+
+The PEP8 Linter validator initially came back with quite a few errors, however these were mainly too many blank lines and whitespace. Once these were all fixed, the validator came back with no errors.
+ 
+<details>
+<summary>Click to see error messages</summary>
+
+    - 31: E501 line too long (86 > 79 characters)
+    - 42: E303 too many blank lines (2)
+    - 50: W291 trailing whitespace
+    - 57: W293 blank line contains whitespace
+    - 58: E501 line too long (80 > 79 characters)
+    - 59: W293 blank line contains whitespace
+    - 62: W293 blank line contains whitespace
+    - 66: E303 too many blank lines (2)
+    - 69: W291 trailing whitespace
+    - 75: E303 too many blank lines (2)
+    - 85: E303 too many blank lines (2)
+    - 97: E303 too many blank lines (2)
+    - 104: E303 too many blank lines (2)
+    - 114: E303 too many blank lines (2)
+    - 118: W291 trailing whitespace
+    - 121: E303 too many blank lines (2)
+    - 131: W291 trailing whitespace
+    - 134: E303 too many blank lines (2)
+    - 139: W293 blank line contains whitespace
+    - 151: E303 too many blank lines (2)
+    - 161: W291 trailing whitespace
+    - 167: E501 line too long (82 > 79 characters)
+    - 176: W291 trailing whitespace
+    - 187: E251 unexpected spaces around keyword / parameter equals
+    - 187: E251 unexpected spaces around keyword / parameter equals
+    - 187: E501 line too long (90 > 79 characters)
+    - 201: W291 trailing whitespace
+    - 202: W291 trailing whitespace
+    - 207: E501 line too long (81 > 79 characters)
+    - 210: W291 trailing whitespace
+    - 211: W291 trailing whitespace
+    - 215: E501 line too long (82 > 79 characters)
+    - 223: E303 too many blank lines (2)
+    - 224: E301 expected 1 blank line, found 0
+    - 229: W291 trailing whitespace
+    - 230: E251 unexpected spaces around keyword / parameter equals
+    - 230: E251 unexpected spaces around keyword / parameter equals
+    - 230: E501 line too long (89 > 79 characters)
+    - 230: W291 trailing whitespace
+    - 249: E251 unexpected spaces around keyword / parameter equals
+    - 249: E251 unexpected spaces around keyword / parameter equals
+    - 249: E501 line too long (90 > 79 characters)
+    - 254: W291 trailing whitespace
+    - 257: W291 trailing whitespace
+    - 262: W291 trailing whitespace
+    - 272: E501 line too long (86 > 79 characters)
+    - 275: W291 trailing whitespace
+</details>
+
+![PEP8 Linter Validator](images/tomahawk-pep8linter.jpg)
 
 --
 ### Manual Testing
 
-| Feature | Expected Action | Test Result |
-| --- | --- | --- |
+Whilst manually testing the game and playing it for a few times, I found a few bugs that required fixing, plus also some tweaks to the way the game ran.
+
+- When entering your name, the rules appeared, but the question asking if they wanted to play did not. Within the 'run_game' function, I moved the last while statement to appear underneath the print statement 'Get your axe ready'.
+
+- The function 'unique_throw' had the wrong references. Amended these to self.direct_hit and self.missed_hit.
+
+- Missed out a function to parse the user's throw to be a tuple of int. The function added was 'parse_throw_axe'.
+
+- In the 'throw_axe' function, I moved the input ('Axes ready..') in to the while loop within the argument.
+
+- In the while loop in 'show_targets' function, I changed the if statements from 'computer_throw.game_over' to 'computer_target.game_over' and the same with the user underneath, to fix the 'tuple has no attribute game_over' error.
+
+- Whilst playing the game, I realised the print message “Throw your first axe!” appears on each throw. Amended this to read “Axes ready!”.
+
+- I wanted to clear the console after each throw, to provide a cleaner display for the user, so added clear() to the show_targets function.
+
+- Now having played the game, the instructions are not quite clear enough. These have been updated to explain better about the target boards, and I have also amended it so that you continue playing until someone wins, rather than only getting 5 throws.
+
+- It was also confusing as to which target board was yours, so I switched them around. For this game, rather than trying to hit your opponent's board, you are trying to get the axes into your own.
+
+- It wasn't clear what symbol was a hit and what was a miss, so these have been updated and a key provided.
+
+- Sometimes when a new game was started, there would only be 2 random hit positions. To fix this, I added the following code to the while loop to ensure the lists are cleared after each game iteration:
+
+    user_target.direct_hit = [ ]
+    
+    user_target.missed_hit = [ ]
+
+- Added in a couple of print statements to the 'show_targets' function so that the Welcome title and the game rules key shows each time the console clears and the user has another throw.
+
+- Removed the print statement 'Thank you for playing...' in the run_game function, as it wasn't really needed.
 
 
----
+
 
 ---
 

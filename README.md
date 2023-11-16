@@ -2,7 +2,7 @@
 
 Welcome to Tomahawk Tactics, an interactive command-line game powered by Python. 
 
-Based on the classic game of BattleShips, this game uses axe throwing as the challenge, attempting to hit a 'moving' target. The user gets 5 attempts to hit 3 targets.
+Based on the classic game of BattleShips, this game uses axe throwing as the challenge, attempting to hit a 'moving' target. Users play against the computer, each taking a turn until someone hits all 3 targets and becomes the winner!
 
 LIVE SITE
 
@@ -60,7 +60,7 @@ GITHUB PAGES
 
 - I would like to play an online logical game.
 - I would like to compete against the computer.
-- I don't want the game so long that I get bored.
+- I don't want the game to go on so long that I get bored.
 - I want to know who won at the end of the game.
 - I would like the option to play again.
 
@@ -79,7 +79,7 @@ To help get a better understanding before I started writing the code for this ga
 
 ## Features
 
-The game is an interactive command-line game, created using Python and deployed within Heruko.
+The game is an interactive command-line game, written in Python and deployed within Heroku.
 
 ### Current Features
 
@@ -109,7 +109,7 @@ The game is an interactive command-line game, created using Python and deployed 
 
 - Hit or Miss on the Board
 
-    As detailed by the key above the game, the user is able to see whether they have hit the target by the use of an 'O', or missed by the use of an 'x'. The 't' on the computer's target board indicates where the computer needs to hit.
+    As detailed by the key above the boards, the user is able to see whether they have hit the target by the use of an 'O', or missed by the use of an 'x'. The 't' on the computer's target board indicates where the computer needs to hit.
 
     ![Hit or miss](images/features/throws-taken.jpg)    
 
@@ -128,7 +128,7 @@ The game is an interactive command-line game, created using Python and deployed 
     ![User won](images/features/user-won.jpg)
 
     ![Computer won](images/features/computer-won.jpg)
-
+    
 - Ending the Game
 
     On two occasions the user gets asked if they are ready to play, and if they want to play again. If they choose 'n' at these points, the game ends and they get a goodbye message.

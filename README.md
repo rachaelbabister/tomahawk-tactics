@@ -24,7 +24,7 @@ GITHUB PAGES
     - [Design](#design)
         - [Flow Chart](#flow-chart)
     - [Features](#features)
-        - [Features need to go here](#features-need-to-go-here)
+        - [Current Features](#current-features)
         - [Future Implementations](#future-implementations)
     - [Technologies Used](#technologies-used)
         - [Languages Used](#languages-used)
@@ -81,7 +81,61 @@ To help get a better understanding before I started writing the code for this ga
 
 The game is an interactive command-line game, created using Python and deployed within Heruko.
 
-### Features need to go here
+### Current Features
+
+- Title page 
+
+    The 'home page' in effect, with the name of the game using ASCII art to create the main title, and also the 'welcome' subtitle. There is the illusion of the "Game Loading..." which is executed with a 3 second delay, to allow the user to read the title. It then asks the user to enter their name.
+
+    ![Title page](images/features/title-page.jpg)
+
+- Welcome and Game Rules
+
+    A welcome subtitle to remind the user the name of the game. A personal hello message to the user, and then a brief explanation of the game and the rules. The user then selects y/n if they want to play.
+
+    ![Game rules](images/features/game-rules.jpg)
+
+- Building Targets
+
+    After stating y to play the game, a delay is set with the print statement 'Getting targets ready...' to give the illusion it is building the targets. 
+
+    ![Building targets](images/features/game-loading.jpg) 
+
+- Target Boards
+
+    The console is cleared, to give a clearer display for the user. The subtitle stays at the top, a reminder of the key for the game, and then 2 boards - one for the user and the other for computer. The user is able to see where the computer needs to try and hit, but their own is hidden. The user needs to enter a 2 number coordinate to take their throw.
+
+    ![Target boards](images/features/target-boards.jpg)
+
+- Hit or Miss on the Board
+
+    As detailed by the key above the game, the user is able to see whether they have hit the target by the use of an 'O', or missed by the use of an 'x'. The 't' on the computer's target board indicates where the computer needs to hit.
+
+    ![Hit or miss](images/features/throws-taken.jpg)    
+
+- Error Messages
+
+    There are 2 possible error messages that could appear, from the users coordinates. One would be if they put in 2 numbers that aren't on the grid. The other is if they have already guessed those numbers.
+
+    ![Off target](images/features/off-target-error.jpg)
+    
+    ![Already guessed](images/features/already-guessed-error.jpg)
+
+- Winning the Game
+
+    The winner is the player who correctly guesses the 3 hits on target first. There is a different message for if the user wins, or the computer wins. There is an option to play again. If the user says 'y', they get taken back to the rules and if they are ready to play.
+
+    ![User won](images/features/user-won.jpg)
+
+    ![Computer won](images/features/computer-won.jpg)
+
+- Ending the Game
+
+    On two occasions the user gets asked if they are ready to play, and if they want to play again. If they choose 'n' at these points, the game ends and they get a goodbye message.
+
+    ![Not ready to play](images/features/not-ready-to-play.jpg)
+    
+    ![No more rounds](images/features/no-another-around.jpg)
 
 
 

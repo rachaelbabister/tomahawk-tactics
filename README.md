@@ -6,7 +6,7 @@ Based on the classic game of BattleShips, this game uses axe throwing as the cha
 
 LIVE SITE
 
-[You can view the live site here, which is best viewed on a desktop.](https:///)
+[You can view the live site here, which is best viewed on a desktop.](https://tomahawk-tactics-77cf3c86629a.herokuapp.com/)
 
 GITHUB PAGES
 
@@ -303,6 +303,8 @@ Whilst manually testing the game and playing it for a few times, I found a few b
 - Added in a couple of print statements to the 'show_targets' function so that the Welcome title and the game rules key shows each time the console clears and the user has another throw.
 
 - Removed the print statement 'Thank you for playing...' in the run_game function, as it wasn't really needed.
+
+- I do have a concern that my code isn't quite running correctly, as having played the game a number of times, the computer is yet to win - and I can't believe it's because I'm that lucky! However, having been through the code with a fine toothcomb I can't seem to find where I might have this wrong.
 
 
 

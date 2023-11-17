@@ -28,7 +28,8 @@ class TargetBoards:
         print("\nGetting targets ready...\n")
         time.sleep(3)
         self.size = 4
-        self.target_size = [[" " for i in range(self.size)] for i in range(self.size)]
+        self.target_size = [
+            [" " for i in range(self.size)] for i in range(self.size)]
         self.target_hits = 3
         self.hit_positions = []
         for i in range(self.target_hits):
@@ -46,25 +47,26 @@ class TargetBoards:
         def hit_hidden(cell):
             if hits_hidden is True and cell == "t":
                 return " "
-            return cell    
+            return cell
 
         # Create Target Grid
         target = ""
         for i, row in enumerate(self.target_size):
             if i == 0:
                 target += "+" + "---+" * (self.size - 1) + "\n"
-                
-            target += "".join([f"| {hit_hidden(cell)}" for cell in row]) + "|\n"
-            
+
+            target += "".join([
+                f"| {hit_hidden(cell)}" for cell in row]) + "|\n"
+
             if i == len(self.target_size) - 1:
                 target += "+" + "---+" * (self.size - 1) + "\n"
-                
+
         print(target)
 
     def random_hit(self):
         """
         Generate a random hit on the target board.
-        """ 
+        """
         row = randrange(self.size)
         col = randrange(self.size)
         return (row, col)
@@ -88,7 +90,7 @@ class TargetBoards:
             return False
         if hit[1] < 0 or hit[1] > self.size - 1:
             return False
-        return True   
+        return True
 
     def unique_throw(self, hit):
         """
@@ -106,7 +108,7 @@ class TargetBoards:
         else:
             self.missed_hit.append(hit)
             self.add_to_target(hit, "x")
-            
+
     def add_to_target(self, hit, letter):
         """
         Add a letter on the target board
@@ -144,13 +146,13 @@ class TomaHawkGame:
         """
         Get the user to 'throw' their axe by selecting a row and column.
         Validate the guess - if the guess is unique it will return
-        the parsed guess. If the guess is not unique, it will print a 
+        the parsed guess. If the guess is not unique, it will print a
         message and continue the loop.
         """
         while True:
             try:
-                parsed_throw_axe = self.parse_throw_axe(
-                    input("Axes ready! Enter your coordinates to take a throw: "))
+                parsed_throw_axe = self.parse_throw_axe(input(
+                    "Axes ready! Enter your coordinates to take a throw: "))
 
                 if target.validate_throw(parsed_throw_axe) is True:
                     if target.unique_throw(parsed_throw_axe):
@@ -159,7 +161,7 @@ class TomaHawkGame:
                 else:
                     print("You missed the target! Try again.")
             except ValueError:
-                pass                
+                pass
 
     def play_game(self, user_target, computer_target):
         """
@@ -170,7 +172,8 @@ class TomaHawkGame:
             Show the target boards
             """
             clear()
-            print(pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital"))
+            print(pyfiglet.figlet_format(
+                "Welcome to Tomahawk Tactics", font="digital"))
             print("x = miss | O = hit | t = the computer's hidden targets")
             print(f"\n{self.user_name} - this is your target: \n")
             computer_target.display_target(True)
@@ -184,21 +187,23 @@ class TomaHawkGame:
             User's guess is added to computer's target.
             Computer's guess is added to user's target
             """
-            user_throw = self.throw_axe(computer_target) 
-            computer_target.show_hit(user_throw) 
+            user_throw = self.throw_axe(computer_target)
+            computer_target.show_hit(user_throw)
 
             # Check to see who won - user or computer
             if computer_target.game_over(computer_target.direct_hit):
                 show_targets()
-                print(f"Well done {self.user_name}! You won Tomahawk Tactics!\n")
+                print(
+                    f"Well done {self.user_name}! You won Tomahawk Tactics!\n")
                 break
 
-            computer_throw = user_target.get_random_hit() 
-            user_target.show_hit(computer_throw) 
+            computer_throw = user_target.get_random_hit()
+            user_target.show_hit(computer_throw)
 
             if user_target.game_over(user_target.direct_hit):
                 show_targets()
-                print("Better luck next time. The computer won Tomahawk Tactics!")
+                print(
+                    "Better luck next time. The computer won Tomahawk Tactics!")
                 break
 
             # Clear lists for the next game iteration
@@ -211,8 +216,9 @@ class TomaHawkGame:
         Display the game name and welcome message in ASCII Art.
         User asked to enter their name.
         """
-        logo = pyfiglet.figlet_format("Tomahawk Tactics") 
-        welcome = pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital") 
+        logo = pyfiglet.figlet_format("Tomahawk Tactics")
+        welcome = pyfiglet.figlet_format(
+            "Welcome to Tomahawk Tactics", font="digital")
         print(logo, welcome, "\nby Rachael Babister\n")
         print("\nGame Loading...\n")
         time.sleep(2)
@@ -231,20 +237,21 @@ class TomaHawkGame:
         # GAME LOOP FOR PLAYING MULTIPLE ROUNDS
         while True:
             clear()
-            print(pyfiglet.figlet_format("Welcome to Tomahawk Tactics", font = "digital"))
+            print(pyfiglet.figlet_format(
+                "Welcome to Tomahawk Tactics", font="digital"))
             print()
             print(f"Hello {self.user_name}! \n")
             print("""
 This is Tomahawk Tactics, an axe throwing game in which you need
-to hit a moving target! You will be playing against the computer - 
+to hit a moving target! You will be playing against the computer -
 the winner is the player who hits their 3 targets first. \n
 In order to 'throw' your axe, you need to choose 2 numbers, each
-one between 0 and 3 and separate them with a comma. These are 
+one between 0 and 3 and separate them with a comma. These are
 your coordinates for the target. The row is the first number and
 the column is the second number, e.g: 0,2\n
 x = miss | O = hit | t = the computer's hidden targets
         """)
-            # READY TO PLAY 
+            # READY TO PLAY
             while True:
                 user_input = input("Are you ready to play? (y/n): ").lower()
                 if user_input == 'y':
@@ -254,10 +261,11 @@ x = miss | O = hit | t = the computer's hidden targets
                     user_target = TargetBoards()
                     self.play_game(user_target, computer_target)
 
-                    play_again = input("Would you like to play another round? y/n \n")
+                    play_again = input(
+                        "Would you like to play another round? y/n \n")
                     if play_again.lower() == "n":
                         print("\nAxes down, see you next time. Goodbye.")
-                        return 
+                        return
                     else:
                         break
                 elif user_input == 'n':

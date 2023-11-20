@@ -104,7 +104,10 @@ class TargetBoards:
         """
         if hit in self.hit_positions:
             self.direct_hit.append(hit)
-            self.add_to_target(hit, "O")
+            if "t" in self.target_size[hit[0]][hit[1]]:
+                self.add_to_target(hit, "O")
+            else:
+                self.add_to_target(hit, "t")
         else:
             self.missed_hit.append(hit)
             self.add_to_target(hit, "x")

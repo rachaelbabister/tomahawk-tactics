@@ -304,7 +304,7 @@ Whilst manually testing the game and playing it for a few times, I found a few b
 
 - Removed the print statement 'Thank you for playing...' in the run_game function, as it wasn't really needed.
 
-- I do have a concern that my code isn't quite running correctly, as having played the game a number of times, the computer is yet to win - and I can't believe it's because I'm that lucky! However, having been through the code with a fine toothcomb I can't seem to find where I might have this wrong.
+- I do have a concern that my code isn't quite running correctly, as having played the game a number of times, the computer is yet to win - and I can't believe it's because I'm that lucky! However, having been through the code with a fine toothcomb I can't seem to find where I might have this wrong. I asked on the Slack Community and it was suggested that maybe the function needed to check if the hit position contains the letter 't' and if so, to replace with 'O'. I have added this in, but I'm not sure it's helped. Unfortunately, I can't see what else I need to do, and so the code will have to stay as it is at this stage.
 
 
 

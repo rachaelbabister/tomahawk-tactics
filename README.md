@@ -4,6 +4,8 @@ Welcome to Tomahawk Tactics, an interactive command-line game powered by Python.
 
 Based on the classic game of BattleShips, this game uses axe throwing as the challenge, attempting to hit a 'moving' target. Users play against the computer, each taking a turn until someone hits all 3 targets and becomes the winner!
 
+![Tomahawk Tactics](images/tomahawk-tactics.jpg)
+
 LIVE SITE
 
 [You can view the live site here, which is best viewed on a desktop.](https://tomahawk-tactics-77cf3c86629a.herokuapp.com/)
